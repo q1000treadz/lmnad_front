@@ -1,0 +1,20 @@
+.source-form {
+    border: 3px outset red;
+    margin-right: 10%;
+    margin-left: 10%;
+    padding-top: 20px;
+    margin-top: 10px;
+  background-color: lightblue;
+}
+
+.form-fields {
+  margin-right: 10%;
+  margin-left: 10%;
+  padding-top: 20px;
+  margin-top: 10px;
+text-align: left;
+}
+
+.div-input {
+
+}

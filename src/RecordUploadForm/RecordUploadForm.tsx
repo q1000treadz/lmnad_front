@@ -5,6 +5,7 @@ import { WaveRecordType } from './types/Record';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Select from "react-select";
+import './Record.css'
 //import "react-select/dist/react-select.css";
 
 
@@ -67,29 +68,37 @@ const RecordUploadForm = ({ getDataSetter }: {getDataSetter: any}) => {
 
 
   return (
-    <div className="App">
+    <div className='source-form'>
       <form onSubmit={submit}>
         {formFields.map((form, index) => {
           return (
             <div key={index}>
             {"Наблюдение: " + (index + 1)}
-              <div>
+            <div className='form-fields'>
+              <div className="text-field">
+              <label className="text-field__label" htmlFor="latitude">Широта</label>
               <input
+                className="text-field__input"
+                id='latitude'
                 name='latitude'
                 placeholder='latitude'
                 onChange={event => handleFormChange(event, index)}
                 value={form.latitude}
               />
               </div>
-              <div>
+              <div className="text-field">
+              <label className="text-field__label" htmlFor="latitude">Долгота</label>
+
               <input
+                className="text-field__input"
                 name='longitude'
                 placeholder='longitude'
                 onChange={event => handleFormChange(event, index)}
                 value={form.longitude}
               />
               </div>
-              <div>
+              <div className="text-field">
+              <label className="text-field__label" htmlFor="latitude">Информация</label>
               <textarea 
                 name = "information"
                 placeholder='information'
@@ -98,11 +107,15 @@ const RecordUploadForm = ({ getDataSetter }: {getDataSetter: any}) => {
               />
               </div>
               <div>
+              <label className="text-field__label" htmlFor="latitude">Дата начала наблюдения</label>
               <DatePicker selected={form.start_date} onChange={(event: any) => handleDateChange('start_date', event, index)} />
+              </div>
+              <div>
+              <label className="text-field__label" htmlFor="latitude">Дата окончания наблюдения</label>
               <DatePicker selected={form.end_date} onChange={(event: any) => handleDateChange('end_date', event, index)} />
               </div>
               <div>
-        <label>Тип волн:</label>
+              <label className="text-field__label" htmlFor="latitude">Тип волн</label>
             <Select
               name="filters"
                 placeholder="Filters"
@@ -112,30 +125,37 @@ const RecordUploadForm = ({ getDataSetter }: {getDataSetter: any}) => {
                 isMulti
               />
              </div>
-              <div>
+             <div className="text-field">
+             <label className="text-field__label" htmlFor="latitude">Масштаб</label>
               <input
+                className="text-field__input"
                 name='scale'
                 placeholder='scale'
                 onChange={event => handleFormChange(event, index)}
                 value={form.scale}
               />
               </div>
-              <div>
+              <div className="text-field">
+              <label className="text-field__label" htmlFor="latitude">Погода</label>
               <input
+                className="text-field__input"
                 name='weather'
                 placeholder='weather'
                 onChange={event => handleFormChange(event, index)}
                 value={form.weather}
               />
               </div>
-              <div>
+              <div className="text-field">
+              <label className="text-field__label" htmlFor="latitude">Причина образования</label>
               <input
+                className="text-field__input"
                 name='source_generation'
                 placeholder='source_generation'
                 onChange={event => handleFormChange(event, index)}
                 value={form.source_generation}
               />
               <button onClick={() => removeFields(index)}>Удалить</button>
+              </div>
             </div>
             </div>
           )
