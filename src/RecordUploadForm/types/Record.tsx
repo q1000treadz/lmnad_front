@@ -8,4 +8,5 @@ export type WaveRecordType = {
     scale: string,
     weather: string,
     source_generation: string, 
+    files: any[]
 };

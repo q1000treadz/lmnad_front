@@ -17,8 +17,8 @@ const App = () => {
   }
 return (
   <div>
-    <button onClick={() => handleButtonClick(AppSectionEnum.MAP)}>Карта</button>
-    <button onClick={() => handleButtonClick(AppSectionEnum.ADD_PLACEMENT)}>Добавить наблюдение</button>
+    <button className ="button-grey" onClick={() => handleButtonClick(AppSectionEnum.MAP)}>Карта</button>
+    <button className ="button-grey" onClick={() => handleButtonClick(AppSectionEnum.ADD_PLACEMENT)}>Добавить наблюдение</button>
     {section === AppSectionEnum.ADD_PLACEMENT ?
   <><DataUploader /></>
   :
@@ -26,7 +26,8 @@ return (
     <div>
       
       <Map
-       width={1000} height={700} defaultState={{ center: [40.75, 37.57], zoom: 2 }}          	
+       width={1000} height={700} defaultState={{ 
+        type: "yandex#satellite", center: [40.75, 37.57], zoom: 2 }}          	
        modules={ [ 'geoObject.addon.balloon', 'geoObject.addon.hint' ] }>
       <MapPlacemark /></Map>
     </div>

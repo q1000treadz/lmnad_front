@@ -6,13 +6,14 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Select from "react-select";
 import './Record.css'
+import FileUploadMultiple from '../FileUploader/FileUploaderMultiple';
 //import "react-select/dist/react-select.css";
 
 
 const RecordUploadForm = ({ getDataSetter }: {getDataSetter: any}) => {
   
   
-  const initValues: WaveRecordType = { latitude: 0, longitude: 0, information: '', start_date: new Date(), end_date: new Date(), wave_types: [], scale: '', weather: '', source_generation:'' };
+  const initValues: WaveRecordType = { latitude: 0, longitude: 0, information: '', start_date: new Date(), end_date: new Date(), wave_types: [], scale: '', weather: '', source_generation:'', files: [] };
 
   const [formFields, setFormFields] = useState([
     {...initValues},
@@ -66,6 +67,12 @@ const RecordUploadForm = ({ getDataSetter }: {getDataSetter: any}) => {
     setFormFields(data)
   }
 
+  const getUploadedFiles = (index: any, fldata: any) => {
+    let data = [...formFields];
+    console.log(index, fldata)
+    data[index]['files'] = fldata;
+    setFormFields(data);
+  }
 
   return (
     <div className='source-form'>
@@ -154,14 +161,16 @@ const RecordUploadForm = ({ getDataSetter }: {getDataSetter: any}) => {
                 onChange={event => handleFormChange(event, index)}
                 value={form.source_generation}
               />
-              <button onClick={() => removeFields(index)}>Удалить</button>
+              <h3>Выберите файлы</h3>
+              <FileUploadMultiple getUploadedFiles={(data:any) => getUploadedFiles(index, data)} />
+              <button className ="button-grey" onClick={() => removeFields(index)}>Удалить</button>
               </div>
             </div>
             </div>
           )
         })}
       </form>
-      <button onClick={addFields}>Еще одно наблюдение...</button>
+      <button className ="button-grey" onClick={addFields}>Еще одно наблюдение...</button>
       <br />
     </div>
   );

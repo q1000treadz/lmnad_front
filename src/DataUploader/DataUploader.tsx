@@ -15,19 +15,25 @@ const DataUploader = () => {
     const [text, setText] = useState('Нажми');
     const handleRecordData = () => {
       return (getRecordData as any)();
-      // etc...
     };
     const handleChildData = () => {
         const records = handleRecordData();
         const source = handleSourceData();
         console.log(records, source)
+        const withRecordsData = {
+          source: source,
+          records: records.map((rr: any) => {
+            return {...rr, latitude: +rr.latitude, longitude: +rr.longitude, wave_types: rr.wave_types.map((wt: any) => wt.value).join(','), 
+            file_records: rr.files.map((fl: any)=> {
+              return {
+                file_id: fl,
+                file_type: 'map'
+              }
+            })}
+          })
+        };
         axios
-        .post('http://localhost:8088' + "/api/source/withRecords", {
-        source: source,
-        records: records.map((rr: any) => {
-          return {...rr, latitude: +rr.latitude, longitude: +rr.longitude, wave_types: rr.wave_types.map((wt: any) => wt.value).join(','), file_records: []}
-        })
-        })
+        .post('http://localhost:8088' + "/api/source/withRecords", withRecordsData)
         .then((res) => {
           console.log(res)
           setText('Успешно добавлено')
@@ -38,7 +44,7 @@ const DataUploader = () => {
   return (<><SourceUploadForm getDataSetter={setGetSourceData} /><RecordUploadForm  getDataSetter={setGetChildData} />
   {text}
   <div>
-    <button onClick={() => handleChildData()}>Добавить</button>
+    <button className ="button-grey" onClick={() => handleChildData()}>Добавить</button>
     </div>
   </>);
 }

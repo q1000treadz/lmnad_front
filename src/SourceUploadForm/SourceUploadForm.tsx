@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { WaveSourceType } from './types/Source';
 import axios from 'axios';
 import './Source.css';
+import FileUploadSingle from '../FileUploader/FileUploaderSingle';
 
 const SourceUploadForm = ({ getDataSetter }: {getDataSetter: any}) => {
      const initValues: WaveSourceType = { doi: '', bibliographic_reference_harvard: '', publish_date: new Date(), file_id: ''};
@@ -99,10 +100,20 @@ const SourceUploadForm = ({ getDataSetter }: {getDataSetter: any}) => {
       data[event] = date; 
       setFormFields(data);
     }
+
+	const getUploadedFiles = ( fldata: any) => {
+		let data = initValues;
+		console.log(fldata)
+		data['file_id'] = fldata;
+		setFormFields(data);
+	  }
   return (
     <div className='source-form'>
-              <div className='div-input'>
+		<div className='form-fields'>
+              <div className="text-field">
+              <label className="text-field__label" htmlFor="latitude">DOI:</label>
               <input
+                className="text-field__input"
                 name='doi'
                 placeholder='doi'
                 onChange={event => handleFormChange(event)}
@@ -110,28 +121,24 @@ const SourceUploadForm = ({ getDataSetter }: {getDataSetter: any}) => {
               />
               </div>
  
-              <div className='div-input'>
+              <div className="text-field">
+              <label className="text-field__label" htmlFor="latitude">Библиографическая ссылка(Гарвард)</label>
               <input
+                className="text-field__input"
                 name='bibliographic_reference_harvard'
                 placeholder='bibliographic_reference_harvard'
                 onChange={event => handleFormChange(event)}
                 value={formFields.bibliographic_reference_harvard}
               />
               </div>
+			  <div className="text-field">
+              <label className="text-field__label" htmlFor="latitude">Дата публикации</label>
               <DatePicker className='div-input' selected={formFields.publish_date} onChange={(event: any) => handleDateChange('publish_date', event)} />
-
+				</div>
 			<div>
 				<h3>Выберите файл источника(pdf)</h3>
-				<div>
-					<input
-						type="file"
-						onChange={onFileChange}
-					/>
-					<button onClick={onFileUpload}>
-						Загрузить
-					</button>
-				</div>
-				{fileData()}
+				<FileUploadSingle getUploadedFiles={(data:any) => getUploadedFiles(data)}/>
+			</div>
 			</div>
  </div>
  )

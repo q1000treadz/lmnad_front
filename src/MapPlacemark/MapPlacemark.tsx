@@ -14,11 +14,12 @@ const MapPlacemark = () => {
         .get('http://localhost:8088' + "/api/record")
         .then((res) => {
             console.log(res.data)
-            const placemarks: any[] = res.data.map((pm: { latitude: number; longitude: number; information: string; }) => {
+            const placemarks: any[] = res.data.map((pm: { latitude: number; longitude: number; information: string;sources: any[]; }) => {
                 return {
                     latitude: pm.latitude,
                     longitude: pm.longitude,
                     information: pm.information,
+                    bibliographic_reference_harvard: pm?.sources?.[0]?.bibliographic_reference_harvard,
                 };
             })
             setData(placemarks);
@@ -28,8 +29,8 @@ const MapPlacemark = () => {
     return (
         <>
         {data.length > 0 && 
-          data.map(pm => {
-            return <Placemark geometry={ [pm.latitude,pm.longitude] }
+          data.map((pm, index) => {
+            return <Placemark key={index} geometry={ [pm.latitude,pm.longitude] }
             options={
               {
                 preset: 'islands#circleIcon', // список темплейтов на сайте яндекса
@@ -37,9 +38,11 @@ const MapPlacemark = () => {
               } }
             properties={
               {
-              iconContent: '2',
-              hintContent: '<b> Я появляюсь при наведении на метку </b>',
-              balloonContent: pm.information,
+              iconContent: '',
+              hintContent: `<b>${pm.information}</b>`,
+              balloonContent: `<div>${pm.information}</div>
+              <div>${pm.bibliographic_reference_harvard}</div>
+              <div>${pm?.latitude?.toFixed(3)}, ${pm?.longitude?.toFixed(3)}`,
                  }	}/>
           })
         }

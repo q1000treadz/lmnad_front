@@ -36,3 +36,14 @@
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
   }
+
+  .button-grey {
+    background-color: rgb(236, 233, 233); /* Green */
+    border: 1px solid #bdbdbd;
+    color: #212529;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
