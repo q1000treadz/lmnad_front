@@ -14,12 +14,14 @@ const MapPlacemark = () => {
         .get('http://localhost:8088' + "/api/record")
         .then((res) => {
             console.log(res.data)
-            const placemarks: any[] = res.data.map((pm: { latitude: number; longitude: number; information: string;sources: any[]; }) => {
+            const placemarks: any[] = res.data.map((pm: { latitude: number; longitude: number; information: string;source: any; record_files: any[]; }) => {
                 return {
                     latitude: pm.latitude,
                     longitude: pm.longitude,
                     information: pm.information,
-                    bibliographic_reference_harvard: pm?.sources?.[0]?.bibliographic_reference_harvard,
+                    bibliographic_reference_harvard: pm?.source?.bibliographic_reference_harvard,
+                    source: pm?.source,
+                    record_files: pm?.record_files,
                 };
             })
             setData(placemarks);
@@ -42,6 +44,7 @@ const MapPlacemark = () => {
               hintContent: `<b>${pm.information}</b>`,
               balloonContent: `<div>${pm.information}</div>
               <div>${pm.bibliographic_reference_harvard}</div>
+              <img src="${'http://localhost:8088/' + pm?.record_files?.[0]?.file?.url}" width="200px" height="200px" />
               <div>${pm?.latitude?.toFixed(3)}, ${pm?.longitude?.toFixed(3)}`,
                  }	}/>
           })
