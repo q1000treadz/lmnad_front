@@ -1,0 +1,93 @@
+{% extends 'igwatlas/base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            <h1>{% trans 'IGWAtlas' %}</h1>
+            <p>{% trans 'Online database of observation and research of Internal Gravity Waves' %}</p>
+            <p><a class="btn btn-primary btn-lg" role="button" href="{% url 'map' %}">{% trans 'Map of observations' %} »</a></p>
+        </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <h3>{% trans "Sources" %}</h3>
+          <p>{% trans 'Database contains' %} {{ count_sources }} {%trans 'sources' %}</p>
+          <p>{% trans 'All data have references to sources' %}</p>
+          <p><a class="btn btn-default" href="{% url 'source' %}" role="button">{% trans 'View details »'%}</a></p>
+        </div>
+        <div class="col-sm-4">
+          <h3>{% trans "World Ocean" %}</h3>
+          <p>{% trans 'IGWAtlas contains observations of ' %}<abbr title="Internal Gravity Waves">{% trans 'IGW' %}</abbr> {% trans ' for all World Ocean ' %} </p>
+        </div>
+        <div class="col-sm-4">
+          <h3>{% trans "Observations" %}</h3>
+          <p> {{ count_observation }} - {% trans 'number of observation in database' %}</p>
+          <!--p> {{ count_records }} - {% trans 'number of records in database' %}</p>
+          <p> {{ count_params }} - {% trans 'number of analyzed records in database' %}</p-->
+          <p>{% trans 'Years in DB: ' %}  {{ min_date|date:"Y" }} -  {{ max_date|date:"Y" }} </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <hr class="featurette-divider">
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">{{ page_data_satellite.title }}</h2>
+          <p class="lead">{{ page_data_satellite.text|safe }}</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" data-src="{% static 'igwatlas/SuluSea2_Figure14.jpg' %}" alt="500x500" src="{% static 'igwatlas/SuluSea2_Figure14.jpg' %}" data-holder-rendered="true">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading">{{ page_data_map.title }}</h2>
+          <p class="lead">{{ page_data_map.text|safe }}</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <img class="featurette-image img-responsive center-block" data-src="{% static 'igwatlas/SouthChinaSea_Bathymetry.jpg' %}" alt="500x500" src="{% static 'igwatlas/SouthChinaSea_Bathymetry.jpg' %}" data-holder-rendered="true">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+      <div class="row featurette">
+        <div class="col-md-7">
+           <h2 class="featurette-heading">{{ page_data_graphic.title }}</h2>
+           <p class="lead">{{ page_data_graphic.text|safe }}</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" data-src="{% static 'igwatlas/2010-Nicole_C-internal waves_Saint_John_f8.png' %}" alt="500x500" src="{% static 'igwatlas/2010-Nicole_C-internal waves_Saint_John_f8.png' %}" data-holder-rendered="true">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+           <h2 class="featurette-heading">{{ page_data_table.title }}</h2>
+           <p class="lead">{{ page_data_table.text|safe }}</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <img class="featurette-image img-responsive center-block" data-src="{% static 'igwatlas/2001-Dokken-coast_norwey_f3.png' %}" alt="500x500" src="{% static 'igwatlas/2001-Dokken-coast_norwey_f3.png' %}" data-holder-rendered="true">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+      <div class="row featurette">
+        <div class="col-md-7">
+           <h2 class="featurette-heading">{{ page_data_record.title }}</h2>
+           <p class="lead">{{ page_data_record.text|safe}}</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" data-src="{% static 'igwatlas/CaliforniaPacific_Figure2.jpg' %}" alt="500x500" src="{% static 'igwatlas/CaliforniaPacific_Figure2.jpg' %}" data-holder-rendered="true">
+        </div>
+      </div>
+      <hr class="featurette-divider">
+    </div>
+{% endblock %}

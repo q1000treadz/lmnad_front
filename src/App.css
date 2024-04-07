@@ -36,3 +36,30 @@
     transform: rotate(360deg);
   }
 }
+
+.red-square {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+}
+
+.green-square {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: green;
+}
+.blue-square {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+}
+
+.yellow-square {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: yellow;
+}
