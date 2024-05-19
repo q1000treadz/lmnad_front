@@ -17,7 +17,7 @@ const SourcesList = () => {
             url += `?suggestion=${suggestion}`;
         }
         axios
-        // .get(process.env.BACKEND_URL + "/api/record")
+        // .get('http://localhost:8088' + "/api/record")
         .get(url)
         .then((res) => {
             console.log(suggestion, res.data)

@@ -21,7 +21,7 @@ function FileUploadMultiple({ getUploadedFiles }: {getUploadedFiles: any}) {
     });
 
     // 👇 Uploading the files using the fetch API to the server
-    fetch('http://localhost:8088/' + "api/file", {
+    fetch('http://localhost:8088' + "api/file", {
       method: 'POST',
       body: data,
     })

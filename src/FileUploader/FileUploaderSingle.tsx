@@ -17,7 +17,7 @@ function FileUploadSingle({ getUploadedFiles }: {getUploadedFiles: any}) {
 
     const data = new FormData();
     data.append(`image`, file, file.name);
-    fetch('http://localhost:8088/' + "api/file", {
+    fetch('http://localhost:8088' + "api/file", {
       method: 'POST',
       body: data,
     })

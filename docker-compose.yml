@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+  client:
+    build: ./
+    container_name: client_frontend
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./:/app
+    stdin_open: true
+    tty: true
