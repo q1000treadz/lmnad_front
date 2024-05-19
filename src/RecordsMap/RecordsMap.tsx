@@ -60,7 +60,7 @@ const RecordsMap = () => {
           <button
             key={bt.id}
             onClick={() => handleButton(bt.id)}
-            style={bt.selected ? {backgroundColor: bt.color, width: '100px', height:'50px'} : {width: '70px', height:'50px', backgroundColor: ''}}
+            style={bt.selected ? {backgroundColor: bt.color, width: '100px', height:'50px'} : {width: '100px', height:'50px', backgroundColor: ''}}
           >
             {bt.title}
           </button>
