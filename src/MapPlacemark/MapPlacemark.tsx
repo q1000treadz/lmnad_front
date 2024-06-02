@@ -59,7 +59,7 @@ const MapPlacemark = ({source_id, wave_types} : {wave_types: string[], source_id
               hintContent: `<b>${pm.information}</b>`,
               balloonContent: `<div>${pm.information}</div>
               <div><a href="${pm.source.url || 'https://example.com'}">${pm.bibliographic_reference_harvard}</a></div>
-              <img src="${'http://212.193.60.235/static/' + pm?.record_files?.[0]?.file?.url}" width="200px" height="200px" />
+              <img src="${'http://212.193.60.235/staticfiles/' + pm?.record_files?.[0]?.file?.url}" width="200px" height="200px" />
               <div>${pm?.latitude?.toFixed(3)}, ${pm?.longitude?.toFixed(3)}`,
                  }	}/>
           })
