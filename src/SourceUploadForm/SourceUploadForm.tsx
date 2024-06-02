@@ -33,7 +33,7 @@ const SourceUploadForm = ({ getDataSetter }: {getDataSetter: any}) => {
 
 		// Request made to the backend api
 		// Send formData object
-		axios.post('http://212.193.60.235' + "api/file", formData).then(res => {
+		axios.post('http://212.193.60.235' + "/api/file", formData).then(res => {
       if(res.status>=200 && res.status<300) {
         let data: any = {...formFields};
         console.log(res.data)
