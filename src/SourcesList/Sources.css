@@ -1,10 +1,11 @@
-.table-sources {
+/* .table-sources {
     border-collapse: collapse;
     border: 1px;
   }
   table, th, td {
     border: 1px solid;
   }
+  */
   .page-link {
     width: 50px;
     height: 50px;
@@ -14,5 +15,39 @@
     height: 50px;
   }
   .page-item-active {
-    background-color: aqua;
+    background-color: #32be3f;
+  } 
+
+
+  .table-sources {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table-sources th,
+  .table-sources td {
+    padding: 12px;
+    border: 1px solid #ccc;
+  }
+  
+  .table-sources th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  .table-sources tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .table-sources td:last-child {
+    text-align: center;
+  }
+  
+  .table-sources a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .table-sources a:hover {
+    color: #0056b3;
   }

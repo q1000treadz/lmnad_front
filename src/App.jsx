@@ -9,9 +9,9 @@ import RecordUploadForm from './RecordUploadForm/RecordUploadForm';
 import DataUploader from './DataUploader/DataUploader';
 import { AppSectionEnum } from './App.enum';
 import SourcesList from './SourcesList/SourcesList';
-import { Link, Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate  } from 'react-router-dom';
 import RecordsMap from './RecordsMap/RecordsMap';
-
+import Login from './Login/Login';
 // const App = () => {
 
 //   const [section, setSection] = useState(AppSectionEnum.MAP);
@@ -50,53 +50,57 @@ import RecordsMap from './RecordsMap/RecordsMap';
 //   </div>
   
 // )
-// };
-
-function App() {
+// };localStorage.getItem('token')
+const ProtectedRoute = ({ children }) => {
+  
   const navigate = useNavigate()
-
-  return (
-    <div className="container">
-      <nav>
+  if (!localStorage.getItem('token')) {
+    // user is not authenticated
+    return <Navigate to="/login" />;
+  }
+  return <><nav>
         <ul>
-        <button className ="button-grey"  onClick={() => navigate("/map")}>Карта</button>
+        <button className ="button-grey" onClick={() => navigate("/map")}>Карта</button>
         <button className ="button-grey" onClick={() => navigate("/add")}>Добавить наблюдение</button>
         <button className ="button-grey" onClick={() => navigate("/sources")}>Список источников</button>
         </ul>
       </nav>
+      {children}</>;
+};
+function App() {
+  
+
+  return (
+    <div className="container">
+      
 
       {/* Defining routes path and rendering components as element */}
       <Routes>
-        <Route path="/" element={<RecordsMap />} />
-        <Route path="/map" element={<RecordsMap />} />
-        <Route path="/add" element={<DataUploader />} />
-        <Route path="/sources" element={<SourcesList />} />
+        <Route path="/login" element={<Login />} />
+        <Route  path="/" element={
+            <ProtectedRoute>
+              <RecordsMap />
+            </ProtectedRoute>
+          } />
+        <Route  path="/map"  element={
+            <ProtectedRoute>
+              <RecordsMap />
+            </ProtectedRoute>
+          } />
+        <Route  path="/add"  element={
+            <ProtectedRoute>
+              <DataUploader />
+            </ProtectedRoute>
+          } />
+        <Route  path="/sources"  element={
+            <ProtectedRoute>
+              <SourcesList />
+            </ProtectedRoute>
+          } />
       </Routes>
     </div>
   );
 }
-
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.tsx</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;
 
