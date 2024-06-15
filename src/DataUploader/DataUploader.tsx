@@ -33,7 +33,7 @@ const DataUploader = () => {
           })
         };
         axios
-        .post('http://localhost:8088' + "/api/source/withRecords", withRecordsData)
+        .post('http://212.193.60.235' + "/api/source/withRecords", withRecordsData)
         .then((res) => {
           console.log(res)
           setText('Успешно добавлено')

@@ -2,7 +2,7 @@
   "name": "diplom_front",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8088/",
+  "proxy": "http://212.193.60.235/",
   "dependencies": {
     "@pbe/react-yandex-maps": "^1.2.5",
     "@testing-library/jest-dom": "^5.17.0",

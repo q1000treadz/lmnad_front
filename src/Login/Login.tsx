@@ -12,7 +12,7 @@ const Login = () => {
     e.preventDefault();
     const user = { login, password };
     try {
-    const res = await axios.post('http://localhost:8088/api/auth/login', user);
+    const res = await axios.post('http://212.193.60.235/api/auth/login', user);
     if (res.data.access_token) {
       localStorage.setItem('token', res.data.access_token);
       navigate('/');

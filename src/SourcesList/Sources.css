@@ -23,11 +23,36 @@
     width: 100%;
     border-collapse: collapse;
   }
+  .table-sources table {
+    table-layout: fixed;
+    height: 50%;
+  }
   
   .table-sources th,
   .table-sources td {
     padding: 12px;
     border: 1px solid #ccc;
+  }
+
+  .table-sources th, 
+  .table-sources td {
+    border: 1px solid black;
+    padding: 15px;
+    text-align: left;
+
+    height: 7%;
+    width: 33%;
+    max-width: 200px;
+    max-height: 150px;
+    /*min-width: 33vh;
+    /*min-height: 5vh;
+    height: 5vh;
+    width: 33vh;
+  
+    /*max-width: 200px; /* Set your desired maximum width here */
+    /*max-height: 150px; /* Set your desired maximum height here */
+    overflow: hidden; /* Hide any overflow text */
+    /*white-space: nowrap; /* Prevent text from wrapping to the next line */
   }
   
   .table-sources th {
@@ -50,4 +75,44 @@
   
   .table-sources a:hover {
     color: #0056b3;
+  }
+
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .button-style {
+
+    background-color: #dedede;
+    color: black;
+    padding: 14px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  .button-inactive {
+    background-color: #dedede;
+  }
+  .button-active {
+    background-color: #007bff;
+  }
+
+  .search-container {
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .search-container input[type=search] {
+    width: 30%; /* Set your desired width here */
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
   }

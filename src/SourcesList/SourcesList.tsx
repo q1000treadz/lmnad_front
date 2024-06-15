@@ -12,12 +12,12 @@ const SourcesList = () => {
     const [suggestion, setSuggestion] = useState('');
     const [recordsPerPage] = useState(10);
     const findSources = () =>{
-        let url = 'http://localhost:8088' + "/api/source";
+        let url = 'http://212.193.60.235' + "/api/source";
         if(suggestion) {
             url += `?suggestion=${suggestion}`;
         }
         axios
-        // .get('http://localhost:8088' + "/api/record")
+        // .get('http://212.193.60.235' + "/api/record")
         .get(url)
         .then((res) => {
             console.log(suggestion, res.data)
@@ -64,6 +64,11 @@ const SourcesList = () => {
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage} />
             </div>
+            <div className="search-container">
+    <input type="search" value={suggestion} onChange={handleChange} placeholder="Search..." />
+    <button  onClick={(event) => handleSubmit(event)}>Поиск</button>
+
+        </div>
             <input style={{width: '150px', height: '60px'}} type="text" value={suggestion} onChange={handleChange} />
             <button style={{width: '60px', height: '60px'}} onClick={(event) => handleSubmit(event)}>Поиск</button></>
       }
