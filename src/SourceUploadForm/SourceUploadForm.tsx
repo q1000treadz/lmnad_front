@@ -7,7 +7,7 @@ import './Source.css';
 import FileUploadSingle from '../FileUploader/FileUploaderSingle';
 
 const SourceUploadForm = ({ getDataSetter }: {getDataSetter: any}) => {
-     const initValues: WaveSourceType = { doi: '', bibliographic_reference_harvard: '', publish_date: new Date(), file_id: ''};
+     const initValues: WaveSourceType = { doi: '', url: '', bibliographic_reference_harvard: '', publish_date: new Date(), file_id: ''};
      const [formFields, setFormFields] = useState(initValues);
     const [selectedFile, setSelectedFile] = useState(null);
 
@@ -129,6 +129,17 @@ const SourceUploadForm = ({ getDataSetter }: {getDataSetter: any}) => {
                 placeholder='bibliographic_reference_harvard'
                 onChange={event => handleFormChange(event)}
                 value={formFields.bibliographic_reference_harvard}
+              />
+              </div>
+
+			  <div className="text-field">
+              <label className="text-field__label" htmlFor="latitude">Ссылка на статью</label>
+              <input
+                className="text-field__input"
+                name='url'
+                placeholder='url'
+                onChange={event => handleFormChange(event)}
+                value={formFields.url}
               />
               </div>
 			  <div className="text-field">

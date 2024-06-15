@@ -41,25 +41,25 @@
     display: inline-block;
     width: 20px;
     height: 20px;
-    background-color: red;
+    background-color: #ff0000;
 }
 
 .green-square {
     display: inline-block;
     width: 20px;
     height: 20px;
-    background-color: green;
+    background-color: #008000;
 }
 .blue-square {
     display: inline-block;
     width: 20px;
     height: 20px;
-    background-color: blue;
+    background-color: #0000ff;
 }
 
 .yellow-square {
     display: inline-block;
     width: 20px;
     height: 20px;
-    background-color: yellow;
+    background-color: #ffff00;
 }

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import MapPlacemark from "../MapPlacemark/MapPlacemark";
 import { useSearchParams } from "react-router-dom";
 import "./RecordsMap.css"
+import PieDiagram from "./PieChart";
 
 const BUTTONS = [
   { id: 123, title: 'Краевые', slug: 'edge', selected: true , color: 'green'},
@@ -66,6 +67,7 @@ const RecordsMap = () => {
           </button>
         ))}
       </div>
+      <PieDiagram />
   </>
     );
 };
