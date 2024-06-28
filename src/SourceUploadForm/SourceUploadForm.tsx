@@ -7,7 +7,7 @@ import './Source.css';
 import FileUploadSingle from '../FileUploader/FileUploaderSingle';
 
 const SourceUploadForm = ({ getDataSetter }: {getDataSetter: any}) => {
-     const initValues: WaveSourceType = { doi: '', url: '', bibliographic_reference_harvard: '', publish_date: new Date(), file_id: ''};
+     const initValues: WaveSourceType = { doi: '', url: '', bibliographic_reference_harvard: '', publish_date: new Date(), file_id: null};
      const [formFields, setFormFields] = useState(initValues);
     const [selectedFile, setSelectedFile] = useState(null);
 

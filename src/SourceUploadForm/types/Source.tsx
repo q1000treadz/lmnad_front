@@ -3,5 +3,5 @@ export type WaveSourceType = {
     doi: string;
     url: string;
     bibliographic_reference_harvard: string;
-    file_id?: string;
+    file_id?: number | null;
 };
