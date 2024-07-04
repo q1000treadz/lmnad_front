@@ -17,7 +17,7 @@ function FileUploadSingle({ getUploadedFiles }: {getUploadedFiles: any}) {
 
     const data = new FormData();
     data.append(`image`, file, file.name);
-    fetch('http://212.193.60.235' + '/api/file', {
+    fetch(process.env.REACT_APP_BACKEND_URL + '/file', {
       method: 'POST',
       body: data,
     })

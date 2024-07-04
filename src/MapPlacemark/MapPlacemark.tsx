@@ -14,7 +14,7 @@ const MapPlacemark = ({source_id, wave_types} : {wave_types: string[], source_id
       'poincare': 'yellow'
     }
     useEffect(() => {
-      let url = 'http://212.193.60.235' + "/api/record?";
+      let url = process.env.REACT_APP_BACKEND_URL + "/record?";
       if(source_id) {
         url+=`source_id=${source_id}&`;
       }
@@ -23,7 +23,6 @@ const MapPlacemark = ({source_id, wave_types} : {wave_types: string[], source_id
       }
       
       axios
-        // .get('http://212.193.60.235' + "/api/record")
         .get(url)
         .then((res) => {
             console.log(res.data)
@@ -59,7 +58,7 @@ const MapPlacemark = ({source_id, wave_types} : {wave_types: string[], source_id
               hintContent: `<b>${pm.information}</b>`,
               balloonContent: `<div>${pm.information}</div>
               <div><a href="${pm.source.url || 'https://example.com'}">${pm.bibliographic_reference_harvard}</a></div>
-              <img src="${'http://212.193.60.235/staticfiles/' + pm?.record_files?.[0]?.file?.url}" width="200px" height="200px" />
+              <img src="${process.env.REACT_APP_BACKEND_URL_IMAGES + '/' + pm?.record_files?.[0]?.file?.url}" width="200px" height="200px" />
               <div>${pm?.latitude?.toFixed(3)}, ${pm?.longitude?.toFixed(3)}`,
                  }	}/>
           })
