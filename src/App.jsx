@@ -54,14 +54,14 @@ import Login from './Login/Login';
 const ProtectedRoute = ({ children }) => {
   
   const navigate = useNavigate()
-  if (!localStorage.getItem('token')) {
-    // user is not authenticated
-    return <Navigate to="/login" />;
-  }
+  // if (!localStorage.getItem('token')) {
+  //   // user is not authenticated
+  //   return <Navigate to="/login" />;
+  // }
   return <><nav>
         <ul>
         <button className ="button-grey" onClick={() => navigate("/map")}>Карта</button>
-        <button className ="button-grey" onClick={() => navigate("/add")}>Добавить наблюдение</button>
+        {/* <button className ="button-grey" onClick={() => navigate("/add")}>Добавить наблюдение</button> */}
         <button className ="button-grey" onClick={() => navigate("/sources")}>Список источников</button>
         </ul>
       </nav>
